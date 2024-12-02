@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-width{
+  @apply max-w-[80%] mx-auto;
+}
+
+body{
+  @apply bg-zinc-100 dark:bg-zinc-950
+}
+
+html{
+  font-size: 10px;
+}
+
+*{
+  font-family: "Inter";
+  line-height: 1;
+}
+
+#recent-activities-container::-webkit-scrollbar{
+  width: 6px;
+}
+#recent-activities-container::-webkit-scrollbar-thumb{
+  @apply bg-zinc-800 rounded-[.5rem]
+}
+.modal-task::-webkit-scrollbar{
+  width: 6px;
+}
+.modal-task::-webkit-scrollbar-thumb{
+  @apply bg-zinc-800 rounded-[.5rem]
+}
+/* .images-message::-webkit-scrollbar{
+  width: 6px;
+} */
+
+.images-message::-webkit-scrollbar{
+  height: 8px;
+}
+
+.images-message::-webkit-scrollbar-thumb{
+  @apply bg-zinc-900/80 rounded-[.5rem]
+}
+
+.message p{
+  @apply leading-[1.3]
+}
+
+.message img {
+   @apply w-full max-h-[400px] object-cover rounded-[.5rem] cursor-pointer;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+button{
+  text-align: start;
+}
+
+/* .labelsla{
+  display: none;
+} */
