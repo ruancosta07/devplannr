@@ -26,7 +26,7 @@ const Projetos = () => {
   const socket = useRef()
 
   useEffect(() => {
-    socket.current = new io('http://localhost:3000', {
+    socket.current = new io('https://devplannrapi-production.up.railway.app', {
       query: {
         userId: user.id,
       },
@@ -61,7 +61,7 @@ const Projetos = () => {
     isFetching,
   } = useQuery(['projects', user.id], async () => {
     return (
-      await axios.get(`http://localhost:3000/${user.id}/plannrs`, {
+      await axios.get(`https://devplannrapi-production.up.railway.app/${user.id}/plannrs`, {
         headers: {
           Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
         },
@@ -72,7 +72,7 @@ const Projetos = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'http://localhost:3000/criar-plannr',
+        'https://devplannrapi-production.up.railway.app/criar-plannr',
         {
           userId: user.id,
           name: newPlannrName,

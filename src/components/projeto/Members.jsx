@@ -21,7 +21,7 @@ const Members = ({ socket, project, reloadProject, members, projectId }) => {
   async function removeUser(id) {
     try {
       const response = (
-        await axios.post(`http://localhost:3000/${projectId}/${id}/remover-usuario`, {
+        await axios.post(`https://devplannrapi-production.up.railway.app/${projectId}/${id}/remover-usuario`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
           },
@@ -36,7 +36,7 @@ const Members = ({ socket, project, reloadProject, members, projectId }) => {
 
   async function changeUserRole({id, role}){
     try {
-      const response = (await axios.patch(`http://localhost:3000/${projectId}/alterar-cargo`, {
+      const response = (await axios.patch(`https://devplannrapi-production.up.railway.app/${projectId}/alterar-cargo`, {
         userId:id,
         role
       }, {

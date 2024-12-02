@@ -70,7 +70,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
     try {
       const response = (
         await axios.post(
-          `http://localhost:3000/${id}/confirmar-senha`,
+          `https://devplannrapi-production.up.railway.app/${id}/confirmar-senha`,
           {
             password: passwordToConfirm,
           },
@@ -93,7 +93,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
     try {
       const response = (
         await axios.patch(
-          `http://localhost:3000/${id}/alterar-senha`,
+          `https://devplannrapi-production.up.railway.app/${id}/alterar-senha`,
           {
             password: newPassword,
           },
@@ -124,7 +124,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
         formData.append('avatar', avatar)
       }
       const response = (
-        await axios.patch(`http://localhost:3000/${id}/editar-usuario`, formData, {
+        await axios.patch(`https://devplannrapi-production.up.railway.app/${id}/editar-usuario`, formData, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
           },
@@ -140,7 +140,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
     setLoading(true)
     try {
       const response = (
-        await axios.post(`http://localhost:3000/${id}/enviar-codigo-email`, {
+        await axios.post(`https://devplannrapi-production.up.railway.app/${id}/enviar-codigo-email`, {
           email: novoEmail,
         })
       ).data
@@ -155,7 +155,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
     setLoading(true)
     try {
       const response = (
-        await axios.post(`http://localhost:3000/${id}/confirmar-codigo-email`, {
+        await axios.post(`https://devplannrapi-production.up.railway.app/${id}/confirmar-codigo-email`, {
           code,
           email: novoEmail,
         })
@@ -171,7 +171,7 @@ const Configuracoes = ({ modal, setModal, reloadProjects, reloadProject }) => {
   async function switchTwoStepsAuth(value) {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/${user.id}/alterar-autenticacao-dois-fatores`,
+        `https://devplannrapi-production.up.railway.app/${user.id}/alterar-autenticacao-dois-fatores`,
         {
           value,
         },

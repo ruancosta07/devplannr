@@ -26,7 +26,7 @@ const CriarConta = () => {
     if (email && password && name) {
       try {
         const response = (
-          await axios.post('http://localhost:3000/criar-conta', {
+          await axios.post('https://devplannrapi-production.up.railway.app/criar-conta', {
             email,
             password,
             name

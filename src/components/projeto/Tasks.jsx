@@ -114,7 +114,7 @@ const Tasks = ({
       try {
         const response = (
           await axios.get(
-            `http://localhost:3000/${activeTask.id}/carregar-mensagens`,
+            `https://devplannrapi-production.up.railway.app/${activeTask.id}/carregar-mensagens`,
             {
               headers: {
                 Authorization: `Bearer ${Cookies.get("authTokenDevPlannr")}`,
@@ -191,7 +191,7 @@ const Tasks = ({
       if (titulo && descricao && statusAtivo && responsaveis.length > 0) {
         try {
           const response = await axios.post(
-            "http://localhost:3000/create-task",
+            "https://devplannrapi-production.up.railway.app/create-task",
             {
               id: projectId,
               name: titulo,
@@ -263,7 +263,7 @@ const Tasks = ({
       }
       const response = (
         await axios.post(
-          `http://localhost:3000/${plannrId}/enviar-mensagem`,
+          `https://devplannrapi-production.up.railway.app/${plannrId}/enviar-mensagem`,
           formData,
           {
             headers: {
@@ -299,7 +299,7 @@ const Tasks = ({
         try {
           const response = (
             await axios.get(
-              `http://localhost:3000/${activeTask.id}/carregar-mensagens`,
+              `https://devplannrapi-production.up.railway.app/${activeTask.id}/carregar-mensagens`,
               {
                 headers: {
                   Authorization: `Bearer ${Cookies.get("authTokenDevPlannr")}`,
@@ -346,7 +346,7 @@ const Tasks = ({
       if (foundUser.role) {
         try {
           const response = await axios.patch(
-            `http://localhost:3000/${projectId}/${id}/editar-tarefa`,
+            `https://devplannrapi-production.up.railway.app/${projectId}/${id}/editar-tarefa`,
             {
               name,
               status,
@@ -371,7 +371,7 @@ const Tasks = ({
   async function deleteTask(id) {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/${projectId}/${id}/excluir-tarefa`,
+        `https://devplannrapi-production.up.railway.app/${projectId}/${id}/excluir-tarefa`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("authTokenDevPlannr")}`,
@@ -400,7 +400,7 @@ const Tasks = ({
   async function deleteMessages(id, activeTaskId) {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/${id}/excluir-mensagem`,
+        `https://devplannrapi-production.up.railway.app/${id}/excluir-mensagem`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("authTokenDevPlannr")}`,
@@ -420,7 +420,7 @@ const Tasks = ({
   async function addReactionToMessage(id, userId, reaction) {
     try {
       const response = await axios.post(
-        `http://localhost:3000/${id}/adicionar-reacao`,
+        `https://devplannrapi-production.up.railway.app/${id}/adicionar-reacao`,
         { userId, reaction },
         {
           headers: {
