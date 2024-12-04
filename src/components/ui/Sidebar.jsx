@@ -42,7 +42,7 @@ const Sidebar = ({ socket, reloadProjects, reloadProject }) => {
     ['projetos', user.id],
     async () =>
       (
-        await axios.get(`https://devplannrapi-production.up.railway.app/${user.id}/plannrs`, {
+        await axios.get(`http://localhost:3000/${user.id}/plannrs`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
           },
@@ -98,7 +98,7 @@ const Sidebar = ({ socket, reloadProjects, reloadProject }) => {
     'deletePlannr',
     async (id) => {
       try {
-        const response = await axios.delete(`https://devplannrapi-production.up.railway.app/${id}/excluir-plannr`, {
+        const response = await axios.delete(`http://localhost:3000/${id}/excluir-plannr`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
           },

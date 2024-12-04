@@ -30,7 +30,7 @@ const Login = () => {
       setLoading(true)
       try {
         const response = (
-          await axios.post('https://devplannrapi-production.up.railway.app/login', {
+          await axios.post('http://localhost:3000/login', {
             email,
             password,
           })
@@ -43,7 +43,9 @@ const Login = () => {
         })
         clearTimeout(timeOut.current)
         timeOut.current = setTimeout(() => {
-          Cookies.set('authTokenDevPlannr', response.token)
+          Cookies.set('authTokenDevPlannr', response.token, {
+            expires: 7
+          })
           setUser(response.user)
           setSigned(true)
           setLogged(true)
@@ -75,7 +77,7 @@ const Login = () => {
   async function confirmCodeLogin (value){
     setLoading(true)
     try {
-      const response = (await axios.post(`https://devplannrapi-production.up.railway.app/confirmar-codigo-login`, {
+      const response = (await axios.post(`http://localhost:3000/confirmar-codigo-login`, {
         email,
         password,
         code: value || code
@@ -87,7 +89,7 @@ const Login = () => {
       })
       clearTimeout(timeOut.current)
       timeOut.current = setTimeout(() => {
-        Cookies.set('authTokenDevPlannr', response.token)
+        Cookies.set('authTokenDevPlannr', response.token, {expires: 7})
         setUser(response.user)
         setSigned(true)
         setLogged(true)
@@ -104,7 +106,7 @@ const Login = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await axios.post(`https://devplannrapi-production.up.railway.app/confirmar-email`,{
+      const response = await axios.post(`http://localhost:3000/confirmar-email`,{
         email
       })
       setEmailExists(true)

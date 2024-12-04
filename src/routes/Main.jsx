@@ -16,7 +16,7 @@ const Main = () => {
         try {
           const response = (
             await axios.post(
-              "https://devplannrapi-production.up.railway.app/validar-token",
+              "http://localhost:3000/validar-token",
               {},
               {
                 headers: {

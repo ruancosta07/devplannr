@@ -26,7 +26,7 @@ const CriarConta = () => {
     if (email && password && name) {
       try {
         const response = (
-          await axios.post('https://devplannrapi-production.up.railway.app/criar-conta', {
+          await axios.post('http://localhost:3000/criar-conta', {
             email,
             password,
             name
@@ -37,7 +37,9 @@ const CriarConta = () => {
           title: 'Conta criada com sucesso',
           text: 'Você será redirecionado(a) em instantes para seu plannr...',
         });
-        Cookies.set("authTokenDevPlannr", response.token,)
+        Cookies.set("authTokenDevPlannr", response.token, {
+          expires: 7
+        })
         setUser(response.user)
         setSigned(true)
         clearTimeout(timeOut.current)

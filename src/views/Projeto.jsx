@@ -52,7 +52,7 @@ const Projeto = () => {
   const [project, setProject] = useState(null)
   const [changeLogo, setChangeLogo] = useState(false)
   useEffect(() => {
-    socket.current = new io("https://devplannrapi-production.up.railway.app", {
+    socket.current = new io("http://localhost:3000", {
       query: {
         userId: user.id
       }
@@ -70,6 +70,7 @@ const Projeto = () => {
     })
 
     socket.current.on("usersOnline", (msg) => {
+      console.log(msg)
       setUsersOnline(msg)
     })
 
@@ -101,7 +102,7 @@ const Projeto = () => {
   async function loadProject() {
     try {
       const response = (
-        await axios.get(`https://devplannrapi-production.up.railway.app/${projectId}/unico-plannr`, {
+        await axios.get(`http://localhost:3000/${projectId}/unico-plannr`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`
           }
@@ -129,7 +130,7 @@ const Projeto = () => {
     ["tasks", projectId],
     async () =>
       (
-        await axios.get(`https://devplannrapi-production.up.railway.app/${projectId}/tasks`, {
+        await axios.get(`http://localhost:3000/${projectId}/tasks`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`
           }
@@ -175,7 +176,7 @@ const Projeto = () => {
         }
         formData.append("logo", logoUrl)
         const response = await axios.patch(
-          `https://devplannrapi-production.up.railway.app/${projectId}/editar-plannr`,
+          `http://localhost:3000/${projectId}/editar-plannr`,
           formData,
           {
             headers: {
@@ -323,7 +324,7 @@ const Projeto = () => {
               whileHover={"bannerHover"}
               id="banner"
               className={twMerge(
-                "h-[300px] object-cover rounded-[.5rem] relative",
+                "h-[300px] object-cover rounded-[.8rem] relative",
                 !regexBanner.test(banner) && banner
               )}
             >

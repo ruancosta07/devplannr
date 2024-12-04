@@ -32,7 +32,7 @@ const HeaderProject = ({ usersOnline, setInvites2, invites2, socket, project, re
       try {
         const response = (
           await axios.post(
-            'https://devplannrapi-production.up.railway.app/procurar-usuarios',
+            'http://localhost:3000/procurar-usuarios',
             {
               query,
             },
@@ -63,7 +63,7 @@ const HeaderProject = ({ usersOnline, setInvites2, invites2, socket, project, re
     ['invites', user.id],
     async () =>
       (
-        await axios.get(`https://devplannrapi-production.up.railway.app/${user.id}/convites`, {
+        await axios.get(`http://localhost:3000/${user.id}/convites`, {
           headers: {
             Authorization: `Bearer ${Cookies.get('authTokenDevPlannr')}`,
           },
@@ -85,7 +85,7 @@ const HeaderProject = ({ usersOnline, setInvites2, invites2, socket, project, re
     setLoading(true)
     try {
       const response = (
-        await axios.post(`https://devplannrapi-production.up.railway.app/convidar-usuario`, {
+        await axios.post(`http://localhost:3000/convidar-usuario`, {
           invitedUserId: id,
           invitingUserId: user.id,
           plannrId: project.id,
@@ -103,7 +103,7 @@ const HeaderProject = ({ usersOnline, setInvites2, invites2, socket, project, re
   async function acceptInvite(id, action) {
     setLoading(true)
     try {
-      const response = await axios.post(`https://devplannrapi-production.up.railway.app/${id}/aceitar-convite`, {
+      const response = await axios.post(`http://localhost:3000/${id}/aceitar-convite`, {
         userId: user.id,
         action,
       })
