@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-50 dark:bg-zinc-950;
+  }
+}
+
+.container-width {
+  @apply max-w-[80%] mx-auto;
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  @apply leading-none;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
