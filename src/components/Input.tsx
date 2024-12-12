@@ -28,7 +28,7 @@ const Input = ({
   id: string;
   className?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>) => {
-  if (type === "text" || type === "email") {
+  if (type !== "textarea") {
     return (
       <input
         id={id}
@@ -46,6 +46,7 @@ const Input = ({
       />
     );
   }
+  
 };
 
 export { InputContainer, InputLabel, Input };

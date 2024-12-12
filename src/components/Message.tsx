@@ -21,13 +21,11 @@ function Message({ type, title, text, message, setMessage }: Partial<MessageInte
   const timeOut = useRef<NodeJS.Timeout | null>(null);
     
   useEffect(() => {
-    console.log('asksdaksdasd')
     if(timeOut.current){
         clearTimeout(timeOut.current)
     }
     timeOut.current = setTimeout(() => {
       setMessage(null);
-      console.log('first')
     }, 3000);
   }, [setMessage, message]);
 

@@ -25,3 +25,8 @@ html {
     --radius: 0.5rem;
   }
 }
+
+.plannrs-sidebar::before{
+  content: "";
+  @apply absolute h-full w-[.1px] dark:bg-zinc-700 inline-block mb-auto left-[1.3rem]
+}

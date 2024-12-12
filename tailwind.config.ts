@@ -28,5 +28,23 @@ export default {
       }
     },
   },
+  safelist: [
+    // Gradientes (direções)
+    {
+      pattern: /^bg-gradient-to-(t|b|l|r|tl|tr|bl|br)$/,
+    },
+    // Cores de início (from)
+    {
+      pattern: /^from-(red|blue|green|yellow|purple|pink|gray|indigo|teal|cyan|amber|lime|rose|fuchsia|emerald|violet|zinc)-(100|200|300|400|500|600|700|800|900)$/,
+    },
+    // Cores intermediárias (via)
+    {
+      pattern: /^via-(red|blue|green|yellow|purple|pink|gray|indigo|teal|cyan|amber|lime|rose|fuchsia|emerald|violet|zinc)-(100|200|300|400|500|600|700|800|900)$/,
+    },
+    // Cores de destino (to)
+    {
+      pattern: /^to-(red|blue|green|yellow|purple|pink|gray|indigo|teal|cyan|amber|lime|rose|fuchsia|emerald|violet|zinc)-(100|200|300|400|500|600|700|800|900)$/,
+    },
+  ],
   plugins: [],
 } satisfies Config;
