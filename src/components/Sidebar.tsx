@@ -7,10 +7,32 @@ import { ChevronDown, HomeIcon, LogOut, Settings, Trash2 } from "lucide-react";
 import Show from "./Show";
 import Image from "next/image";
 import Link from "next/link";
-const Sidebar = ({ plannrs }: { plannrs: { id: string; name: string }[] }) => {
+import { PlannrInterface } from "@/types/Project";
+import Cookies from "js-cookie";
+const Sidebar = () => {
+  const {user} = useUserStore()
   const [sidebarActive, setSidebarActive] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
-  const { user } = useUserStore();
+  const [plannrs, setPlannrs] = useState<PlannrInterface[] | null>(null)
+
+  useEffect(()=> {
+    if(user){
+      async function loadPlannrs (){
+        try {
+          const response = await fetch(`http://localhost:3000/${user?.id}/plannrs`, {
+            headers: {
+              "Authorization": `Bearer ${Cookies.get("authTokenDevPlannr")}`
+            }
+          })
+          const data:PlannrInterface[] = await response.json()
+          setPlannrs(data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      loadPlannrs()
+    }
+  },[setPlannrs, user])
 
   useEffect(() => {
     function activeSidebbarOnMouseMove(e: MouseEvent) {
@@ -53,7 +75,7 @@ const Sidebar = ({ plannrs }: { plannrs: { id: string; name: string }[] }) => {
               </button>
               <Show when={showProjects}>
               <div className="plannrs-sidebar relative">
-                {plannrs.map((p) => (
+                {plannrs?.map((p) => (
                   <Link className="p-[.8rem] block project-sidebar relative hover:bg-zinc-800 ml-[2rem] rounded-2 duration-200" key={p.id} href={p.id}>
                     {p.name}
                   </Link>
