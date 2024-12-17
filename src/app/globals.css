@@ -30,3 +30,10 @@ html {
   content: "";
   @apply absolute h-full w-[.1px] dark:bg-zinc-700 inline-block mb-auto left-[1.3rem]
 }
+
+.custom-scrollbar::-webkit-scrollbar-thumb{
+  @apply bg-zinc-800 rounded-full
+}
+.custom-scrollbar::-webkit-scrollbar{
+  @apply w-[.8rem] rounded-full
+}
