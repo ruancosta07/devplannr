@@ -42,6 +42,11 @@ const LoginComp = () => {
         }
       } catch (err) {
         console.log(err);
+        setMessage({
+          title: "Erro interno do servidor",
+          text: "Se o erro persistir, entre em contato com o suporte para resolver isso.",
+          type: "error",
+        });
       } finally {
         setIsLoading(false);
       }
