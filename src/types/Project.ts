@@ -1,4 +1,4 @@
-interface Members {
+export interface Members {
   id: string;
   name: string;
   avatar: string;
@@ -21,25 +21,28 @@ interface Files {
   type: string;
 }
 
-interface Messages {
+export interface Messages {
   id: string;
   name: string;
   avatar: string;
   content: string;
   files: Files[];
   sendAt: string;
+  userId: string;
 }
 
-interface Tasks {
+export interface TasksInterface {
   id: string;
   name: string;
   description: string;
   status: string;
+  priority: string;
   users: Members[];
   createdAt: string;
   plannrId: string;
   messages: Messages;
   expiresAt: string;
+  tags?: string[];
 }
 
 export interface PlannrInterface {
@@ -49,7 +52,7 @@ export interface PlannrInterface {
   banner: string;
   members: Members[];
   userId: string;
-  tasks: Tasks;
+  tasks: TasksInterface[];
   recents: Recents[];
   accessedIn: string;
 }
